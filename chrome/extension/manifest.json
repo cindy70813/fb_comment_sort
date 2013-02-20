@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+
+    "name": "Facebook Comment Chronological Sort",
+    "description": "Sorts individual post comments (visible) in chronological order on Facebook \"Page\".",
+    "version": "1.0",
+
+    "browser_action": {
+	"default_icon": "images/icon_19.png",
+	"background_page": "background.html",
+	"default_popup": "popup.html"
+    },
+    "icons": {
+	"16":"images/icon_16.png",
+	"48":"images/icon_48.png",
+	"128":"images/icon_128.png"
+    }, 
+    "permissions": [
+    "http://www.facebook.com/pages/*"
+    ],
+    "content_scripts": [ {
+	"run_at": "document_start",
+	"js": [ "jquery.min.js", "background.js" ],
+	"matches": [ "http://*/*", "https://*/*"]
+    }]
+}
+
+
+

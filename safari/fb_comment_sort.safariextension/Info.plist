@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Michael Scarchilli</string>
+	<key>Builder Version</key>
+	<string>534.52.7</string>
+	<key>CFBundleDisplayName</key>
+	<string>Facebook Chronological Comment Sort</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.mikevision.fbcommentsort</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.1</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>global.html</string>
+		<key>Menus</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>toolBarMenu</string>
+				<key>Menu Items</key>
+				<array>
+					<dict>
+						<key>Checked State</key>
+						<real>0.0</real>
+						<key>Command</key>
+						<string>extensionTitle</string>
+						<key>Disabled</key>
+						<false/>
+						<key>Identifier</key>
+						<string>extensionTitle</string>
+						<key>Image</key>
+						<string>icon.png</string>
+						<key>Title</key>
+						<string>Facebook Chronological Comment Sort</string>
+					</dict>
+					<dict>
+						<key>Identifier</key>
+						<string>sep1</string>
+						<key>Separator</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>Command</key>
+						<string>btn_donate</string>
+						<key>Identifier</key>
+						<string>btn_donate</string>
+						<key>Title</key>
+						<string>Support this Extension - Donate</string>
+					</dict>
+				</array>
+			</dict>
+		</array>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string></string>
+				<key>Identifier</key>
+				<string>commentSort</string>
+				<key>Image</key>
+				<string>icon.png</string>
+				<key>Label</key>
+				<string>Facebook Chronological Comment Sort</string>
+				<key>Menu</key>
+				<string>toolBarMenu</string>
+				<key>Palette Label</key>
+				<string>commentSort</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>global-min.js</string>
+			</array>
+			<key>Start</key>
+			<array>
+				<string>jquery.min.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Sorts individual post comments (visible) in chronological order on Facebook "Page".</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.facebook.com</string>
+			</array>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
+	</dict>
+	<key>Website</key>
+	<string>http://www.mikevision.com</string>
+</dict>
+</plist>

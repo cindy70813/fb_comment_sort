@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Facebook Chronological Comment Sort</title>
+        <script>  	 
+            // Set up the Listener  
+            safari.application.addEventListener("command", performCommand, null);         
+            safari.application.addEventListener("validate", validateHandler, true);
+            safari.application.addEventListener("menu", menuHandler, true);
+           
+            // Function to perform when event is received  
+            function performCommand(event) {  
+                // Make sure event comes from the button  
+                if (event.command == 'btn_donate') {
+		    var newTab = safari.application.activeBrowserWindow.openTab();  
+		    newTab.url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40mikevision%2ecom&lc=US&item_name=MikeVision%2ecom&item_number=Facebook%20Chronological%20Comment%20Sort&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted'; 
+                } 
+		
+		
+		
+		if (event.target.identifier !== "extensionTitle"){
+		    
+		    
+		    return;
+		}
+		
+		
+		
+
+            } 
+        </script>  
+    </head>
+    <body>
+    </body>
+</html>
