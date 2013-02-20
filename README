@@ -1,13 +1,16 @@
-Facebook script is for Greasemonkey
+Name:			Facebook Comment Chronological Sort
+Author:			Michael J Scarchilli & Bunnies... lots and lots of bunnies!
+Namespace:		http://www.mikevision.com
+Version:		1.3
+Description:	Sorts individual post comments in chronological order on a Facebook "Page".
 
-Chrome & Safari versions are unpacked extension files.
+
+Facebook script is for Greasemonkey. Also on Userscripts.org with JS minified.
+http://userscripts.org/scripts/show/158398
 
 
-Packaged Extensions
---------------------------------
+Packaged Extensions:
+--------------------
 
-Chrome Extension:
-fb_comment_sort.crx
- 
 Safari Extension:
 fb_comment_sort.safariextz
