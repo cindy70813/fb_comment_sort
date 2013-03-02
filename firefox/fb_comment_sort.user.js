@@ -34,8 +34,8 @@ jQuery.noConflict();
 	}
 	else if(photoPage){	 
 	    // ON PHOTO PAGE CHANGE ADD SORT BUTTON //
-	    $(document).on('click', 'a.photoPageNextNav, a.photoPagePrevNav, #fbPhotoImage', function() { 
-		loadPhotoSortButton()
+	    $(document).on('click', '.photoPageNextNav, .photoPagePrevNav, #fbPhotoImage', function() { 
+		loadPhotoSortButton();
 	    });
 	    
 	    function loadPhotoSortButton(){
