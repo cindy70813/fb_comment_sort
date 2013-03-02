@@ -18,7 +18,7 @@ jQuery.noConflict();
     $(document).ready(function(){
 	var timelinePage = $('body').hasClass('pagesTimelineLayout');
 	var photoPage = $('body').hasClass('ego_page'); 
-	var sortBullet = '<span class="sort-bullet"> · </span>';
+	var sortBullet = '<span class="sort-bullet"> &middot; </span>';
 	var sortButton = '<span class="sortButton"><a title="Sort Comments" href="#"><span id="">Sort</span></a></span>';
 	var photoLightBox;
         
