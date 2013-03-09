@@ -1,1 +1,114 @@
-$(document).ready(function(){function i(){function i(e){var t=[];var n;var r;var i;var s;var o=$(e).children("li.UFILikeSentence").remove();var u=$(e).children("li.UFIPagerRow").remove();var a=$(e).children("li.UFIArrow").remove();var f=$(e).children("li.UFIAddComment").remove();$(e).children("li, ul").each(function(){n=this.id;r=this.outerHTML;i=n.substring(0,n.indexOf("}"));s=i.substr(i.lastIndexOf("_")+1);t.push({id:s,html:r})});t.sort(function(e,t){return e.id-t.id});$(e).children("li,ul").remove();for(var l=0;l<t.length;++l){$(e).append(t[l].html)}$(e).prepend(a,o);$(e).append(u,f)}var r;$(".sortButton, .sort-bullet").remove();$(".UIActionLinks").append('<span class="sortButton"><a title="Sort Comments" href="#"><span id="">Sort</span></a></span>');$(".share_action_link").after(n);$(".sortButton").bind("click",function(n){n.preventDefault();if(e){r=$(this).parents("div.fbTimelineFeedbackHeader").next("div").find("ul").attr("id")}else if(t){r=$(this).parents().next("div").find("ul").attr("id")}var s=document.getElementById(r);i(s)})}var e=$("body").hasClass("pagesTimelineLayout");var t=$("body").hasClass("ego_page");var n='<span class="sort-bullet"> Â· </span>';if(e){i()}else if(t){var r=$("#fbPhotoPageTimestamp").remove();i();$(".UIActionLinks").append(n,r)}if(e){$(document).bind("DOMNodeInserted",function(e){if($(e.target).hasClass("lastCapsule")){i()}})}})
+$(document).ready(function(){
+	var timelinePage = $('body').hasClass('pagesTimelineLayout');
+	var photoPage = $('body').hasClass('ego_page'); 
+	var sortBullet = '<span class="sort-bullet"> · </span>';
+	var sortButton = '<span class="sortButton"><a title="Sort Comments" href="#"><span id="">Sort</span></a></span>';
+	var photoLightBox;
+        
+	if(timelinePage){
+	    addSortButton();
+	    
+	    // ADD "SORT" BUTTON WHEN fbTimelineUnit INSERTED INTO DOM //
+	    $(document).bind('DOMNodeInserted', function(e) {
+		if($(e.target).hasClass('lastCapsule')){
+		    addSortButton();	    
+		}
+	    });
+	}
+	else if(photoPage){	 
+	    // ON PHOTO PAGE CHANGE ADD SORT BUTTON //
+	    $(document).on('click', 'a.photoPageNextNav, a.photoPagePrevNav, #fbPhotoImage', function() { 
+		loadPhotoSortButton()
+	    });
+	    
+	    function loadPhotoSortButton(){
+		var fbPhotoPageTimestamp = $('#fbPhotoPageTimestamp').remove();
+		addSortButton();
+		$('.UIActionLinks').append(sortBullet, fbPhotoPageTimestamp); 
+	    }
+	    
+	    loadPhotoSortButton();    
+	}
+	
+	$(document).bind('DOMNodeInserted', function(e) {
+	    if($(e.target).hasClass('fbPhotoSnowliftActionLinks')){
+		photoPage = false;
+		photoLightBox = true;
+		addSortButton();	    
+	    }
+	});
+
+	// "SORT BUTTON" //
+	function addSortButton(){
+	    var postID;
+	        
+	    $('.sortButton, .sort-bullet').remove();
+            
+	    // ADD SORT BUTTON //
+	    if(!photoLightBox){
+		$('.UIActionLinks').append(sortButton);
+	    }
+	    else{
+		$('.UIActionLinks').append(sortBullet,sortButton);
+	    }
+	    
+	    $('.share_action_link').after(sortBullet);
+            
+	    $('.sortButton').bind('click', function(e){
+		e.preventDefault();               
+                
+		if(timelinePage){
+		    postID = $(this).parents('div.fbTimelineFeedbackHeader').next('div').find('ul').attr('id');
+		}
+		else if(photoPage){
+		    postID = $(this).parents().next('div').find('ul').attr('id');        		    
+		}
+		if(photoLightBox) {
+		    postID = $(this).parents().next('div').find('ul').attr('id');        		    
+		}
+  
+		var post = document.getElementById(postID);
+		sortList(post);
+	    });
+
+	    function sortList(post){
+		var commentArray = [];
+		var commentID;
+		var commentHTML;	
+		var removePIDend;
+		var PID;	
+		var likeSentence = $(post).children('li.UFILikeSentence').remove();	
+		var pagerRow = $(post).children('li.UFILastCommentComponent').remove();	
+		var ufiArrow = $(post).children('li.UFIArrow').remove();	
+		var userComment = $(post).children('li.UFIAddComment').remove();	
+
+		// GET LI ID'S //
+		$(post).children('li, ul').each(function(){
+		    commentID = (this.id);
+		    commentHTML = (this.outerHTML);
+
+		    removePIDend = commentID.substring(0, commentID.indexOf("}"));
+		    PID = removePIDend.substr(removePIDend.lastIndexOf('_')+1);
+
+		    commentArray.push({
+			id:PID,
+			html:commentHTML
+		    });
+		});
+
+		commentArray.sort(function(a,b){
+		    return a.id-b.id;
+		});
+
+		$(post).children('li,ul').remove();
+		for( var i = 0 ; i < commentArray.length ; ++i){
+		    $(post).append(commentArray[i].html);
+		}
+                
+		$(post).prepend(ufiArrow, likeSentence);
+		$(post).append(pagerRow, userComment);
+	    }
+	}       
+
+    // DOCUMENT READY END //
+    });
