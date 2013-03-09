@@ -37,7 +37,8 @@ jQuery.noConflict();
 		var fbPhotoPageTimestamp = $('#fbPhotoPageTimestamp').remove();
 		$('.UIActionLinks').append(sortBullet);
 		addSortButton();
-		$('.UIActionLinks').append(sortBullet, fbPhotoPageTimestamp);		 
+		$('.UIActionLinks').append(sortBullet, fbPhotoPageTimestamp);
+		 
 	    }
 	    
 	    // ON PHOTO PAGE CHANGE ADD SORT BUTTON //
@@ -50,45 +51,62 @@ jQuery.noConflict();
 	}
 	
 	$(document).bind('DOMNodeInserted', function(e) {
-	    if($(e.target).hasClass('fbPhotoSnowliftActionLinks')){
+	    if($(e.target).hasClass('fbPhotoSnowlift')){
 		photoPage = false;
 		photoLightBox = true;
-		addSortButton();	    
+		addSortButton();	
 	    }
 	});
 
 	// "SORT BUTTON" //
 	function addSortButton(){
 	    var postID;
+	    var sortButtonClick;
 	        
 	    $('.sortButton, .sort-bullet').remove();
-            
 	    // ADD SORT BUTTON //
 	    if(!photoLightBox){
 		$('.UIActionLinks').append(sortButton);
 	    }
 	    else{
-		$('.UIActionLinks').append(sortBullet,sortButton);
+		setTimeout(function(){
+		    document.getElementById('fbPhotoSnowliftFeedback').children[1].innerHTML += sortBullet + sortButton;
+		    sortButtonClick = document.getElementsByClassName('sortButton')[0];
+		    sortButtonClick.onclick=function(){
+			sortButtonAction(this);
+		    };
+		},2000);		
 	    }
 	    
 	    $('.share_action_link').after(sortBullet);
-            
-	    $('.sortButton').bind('click', function(e){
-		e.preventDefault();               
-                
+	    
+	    sortButtonClick = document.getElementsByClassName('sortButton')[0];
+	    
+	    sortButtonClick.onclick=function(){
+		sortButtonAction(this)
+	    };
+	    
+	    function sortButtonAction(data){
+
 		if(timelinePage){
+		    alert(data);
 		    postID = $(this).parents('div.fbTimelineFeedbackHeader').next('div').find('ul').attr('id');
 		}
 		else if(photoPage){
 		    postID = $(this).parents().next('div').find('ul').attr('id');        		    
 		}
 		if(photoLightBox) {
-		    postID = $(this).parents().next('div').find('ul').attr('id');        		    
+		    postID = $(this).parents().next('div').find('ul').attr('id');   		        		    
 		}
   
 		var post = document.getElementById(postID);
 		sortList(post);
-	    });
+	    }
+	    
+            
+	    $('.sortButton').bind('click', function(e){
+		
+		});
 
 	    function sortList(post){
 		var commentArray = [];
