@@ -16,15 +16,48 @@ jQuery.noConflict();
 (function($){
 
     $(document).ready(function(){
+<<<<<<< HEAD
+	var timelinePage = $('body').hasClass('pagesTimelineLayout');
+	var photoPage = $('body').hasClass('ego_page'); 
+	var sortBullet = '<span class="sort-bullet"> &middot; </span>';
+	var sortButton = '<span class="sortButton"><a title="Sort Comments" href="#"><span id="">Sort</span></a></span>';
+	var photoLightBox;
+=======
         var timelinePage = $('body').hasClass('pagesTimelineLayout');
         var photoPage = $('body').hasClass('ego_page'); 
         var sortBullet = '<span class="sort-bullet"> &middot; </span>';
         var sortButton = '<span class="sortButton"><a title="Sort Comments" href="#"><span id="">Sort</span></a></span>';
         var photoLightBox;
+>>>>>>> 7832a7a5f3cf0bef3441f57d3c39dbe419366a94
         
         if(timelinePage){
             addSortButton();
 	    
+<<<<<<< HEAD
+	    // ADD "SORT" BUTTON WHEN fbTimelineUnit INSERTED INTO DOM //
+	    $(document).bind('DOMNodeInserted', function(e) {
+		if($(e.target).hasClass('lastCapsule')){
+		    addSortButton();	    
+		}
+	    });
+	}
+	else if(photoPage){	 
+	    function loadPhotoSortButton(){
+		var fbPhotoPageTimestamp = $('#fbPhotoPageTimestamp').remove();
+		$('.UIActionLinks').append(sortBullet);
+		addSortButton();
+		$('.UIActionLinks').append(sortBullet, fbPhotoPageTimestamp);		 
+	    }
+	    
+	    // ON PHOTO PAGE CHANGE ADD SORT BUTTON //
+	    $(document).on('click', 'a.photoPageNextNav, a.photoPagePrevNav, #fbPhotoImage', function() { 
+		loadPhotoSortButton();
+		console.log('click');
+	    });
+	    
+	    loadPhotoSortButton();    
+	}
+=======
             // ADD "SORT" BUTTON WHEN fbTimelineUnit INSERTED INTO DOM //
             $(document).bind('DOMNodeInserted', function(e) {
                 if($(e.target).hasClass('lastCapsule')){
@@ -46,6 +79,7 @@ jQuery.noConflict();
 	    
             loadPhotoSortButton();    
         }
+>>>>>>> 7832a7a5f3cf0bef3441f57d3c39dbe419366a94
 	
         $(document).bind('DOMNodeInserted', function(e) {
             if($(e.target).hasClass('fbPhotoSnowliftActionLinks')){
