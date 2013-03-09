@@ -4,6 +4,7 @@ $(document).ready(function(){
     var sortBullet = '<span class="sort-bullet"> &middot; </span>';
     var sortButton = '<span class="sortButton"><a title="Sort Comments" href="#"><span id="">Sort</span></a></span>';
     var photoLightBox;
+    var postID;
         
     if(timelinePage){
         addSortButton();
@@ -15,20 +16,26 @@ $(document).ready(function(){
             }
         });
     }
-    else if(photoPage){
+    else if(photoPage){	 
         // ON PHOTO PAGE CHANGE ADD SORT BUTTON //
-        $('.photoPageNextNav, .photoPagePrevNav').attr('onClick','');
-            
-        $(document).on('click', '.photoPageNextNav, .photoPagePrevNav, #fbPhotoImage', function() { 
-            loadPhotoSortButton();
+        var nextPhotoPageURL = $('.photoPageNextNav').attr('href');
+        var prevPhotoPageURL = $('.photoPagePrevNav').attr('href');
+        
+        $('.photoPageNextNav, .photoPagePrevNav').bind('click',function(e){
+            e.preventDefault();
+            location.href(nextPhotoPageURL);
         });
         
+        $(document).on('click', '#fbPhotoImage', function() { 
+            loadPhotoSortButton();
+        });
+	    
         function loadPhotoSortButton(){
             var fbPhotoPageTimestamp = $('#fbPhotoPageTimestamp').remove();
             addSortButton();
             $('.UIActionLinks').append(sortBullet, fbPhotoPageTimestamp); 
         }
-    
+	    
         loadPhotoSortButton();    
     }
 	
@@ -42,7 +49,7 @@ $(document).ready(function(){
 
     // "SORT BUTTON" //
     function addSortButton(){
-        var postID;
+        
 	        
         $('.sortButton, .sort-bullet').remove();
             
