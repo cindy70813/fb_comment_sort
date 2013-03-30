@@ -12,5 +12,8 @@ http://userscripts.org/scripts/show/158398
 Packaged Extensions:
 --------------------
 
+Chrom Extension:
+chrome/fb-comment-sort.crx
+
 Safari Extension:
-fb_comment_sort.safariextz
+safari/fb_comment_sort.safariextz
