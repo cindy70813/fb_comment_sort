@@ -5,7 +5,7 @@ $(document).ready(function() {
     var sortButton = '<span class="sortButton"><a title="Sort Comments" href="#">Sort</a></span>';
     var photoLightBox;
 
-    // TIMELIN PAGE //
+    // TIMELINE PAGE //
     if (timelinePage) {
         photoPage = false;
         timelinePage = true;
