@@ -4,7 +4,6 @@ Namespace:	http://www.mikevision.com
 Version:	2.0
 Description:	Sorts individual post comments in chronological order on a Facebook "Page" and photo pages/lightbox photos.
 
-
 Facebook script is for Greasemonkey. Also on Userscripts.org with JS minified.
 http://userscripts.org/scripts/show/158398
 
