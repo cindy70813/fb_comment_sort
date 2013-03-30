@@ -20,7 +20,7 @@
     ],
     "content_scripts": [ {
 	"run_at": "document_start",
-	"js": [ "jquery.min.js", "background.js" ],
+	"js": [ "jquery.min.js", "background-min.js" ],
 	"matches": [ "http://*/*", "https://*/*"]
     }]
 }
