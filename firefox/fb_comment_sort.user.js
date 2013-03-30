@@ -50,7 +50,9 @@ jQuery.noConflict();
 
             // ON PHOTO PAGE CHANGE ADD SORT BUTTON //
             $(document).on('click', 'a.photoPageNextNav, a.photoPagePrevNav, #fbPhotoImage', function() {
-                loadPhotoSortButton();
+                setTimeout(function() {
+                    loadPhotoSortButton();
+                }, 1000);
             });
 
             loadPhotoSortButton();
