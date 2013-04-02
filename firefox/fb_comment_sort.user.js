@@ -2,7 +2,7 @@
 // @name            Facebook Comment Chronological Sort
 // @author          Michael J Scarchilli & Bunnies... lots and lots of bunnies!
 // @namespace       http://www.mikevision.com
-// @version         2.0
+// @version         2.1
 // @description     Sorts individual post comments in chronological order on a Facebook "Page" and photo pages/lightbox photos.
 // @require         https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // @include         https://www.facebook.com/*
