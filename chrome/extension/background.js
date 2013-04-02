@@ -1,8 +1,9 @@
 $(document).ready(function() {
     var timelinePage = $('body').hasClass('pagesTimelineLayout');
     var photoPage = $('body').hasClass('ego_page');
-    var sortBullet = '<span class="sort-bullet"> &middot; </span>';
-    var sortButton = '<span class="sortButton"><a title="Sort Comments" href="#">Sort</a></span>';
+    var otherPage = $('body').hasClass('home');
+    var sortBullet = '<span class="sort-bullet"> · </span>';
+    var sortButton = '<span class="sortButton"><a title="Sort Comments" href="#"><span id="">Sort</span></a></span>';
     var photoLightBox;
 
     // TIMELINE PAGE //
@@ -21,7 +22,9 @@ $(document).ready(function() {
             }
         });
     }
-    // PHOTO PAGE //
+    else if (otherPage) {
+        addSortButton();
+    }
     else if (photoPage) {
         photoPage = true;
         function loadPhotoSortButton() {
@@ -33,11 +36,11 @@ $(document).ready(function() {
         }
 
         // ON PHOTO PAGE CHANGE ADD SORT BUTTON //
-            $(document).on('click', 'a.photoPageNextNav, a.photoPagePrevNav, #fbPhotoImage', function() {
-                setTimeout(function() {
-                    loadPhotoSortButton();
-                }, 1000);
-            });
+        $(document).on('click', 'a.photoPageNextNav, a.photoPagePrevNav, #fbPhotoImage', function() {
+            setTimeout(function() {
+                loadPhotoSortButton();
+            }, 1000);
+        });
 
         loadPhotoSortButton();
     }
@@ -59,8 +62,13 @@ $(document).ready(function() {
 
         // ADD SORT BUTTON //
         function addButton() {
-            $('.sortButton, .sort-bullet').remove();
-            $('.UIActionLinks').append(sortBullet, sortButton);
+            if (!otherPage) {
+                $('.sortButton, .sort-bullet').remove();
+                $('.UIActionLinks').append(sortBullet, sortButton);
+            }
+            else {
+                $('.share_action_link').after(sortBullet, sortButton);
+            }
 
             $('.sortButton').bind('click', function() {
                 sortButtonAction(this);
@@ -124,6 +132,9 @@ $(document).ready(function() {
             else if (photoPage) {
                 postID = $(data).parents().next('div').find('ul').attr('id');
             }
+            else{
+                    postID = $(data).parents().next('div').find('ul').attr('id');
+                }
             if (photoLightBox) {
                 postID = data;
             }
