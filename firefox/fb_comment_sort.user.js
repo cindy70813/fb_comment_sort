@@ -148,6 +148,9 @@ jQuery.noConflict();
                 else if (photoPage) {
                     postID = $(data).parents().next('div').find('ul').attr('id');
                 }
+                else{
+                    postID = $(data).parents().next('div').find('ul').attr('id');
+                }
                 if (photoLightBox) {
                     postID = data;
                 }
